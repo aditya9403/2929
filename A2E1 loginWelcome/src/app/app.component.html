@@ -1,0 +1,28 @@
+<div class="login-container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" formControlName="username">
+      <div *ngIf="f['username'].invalid && (f['username'].dirty || f['username'].touched)" class="error">
+        <div *ngIf="f['username'].errors?.['required']">Username is required.</div>
+        <div *ngIf="f['username'].errors?.['minlength']">Username must be at least 3 characters long.</div>
+      </div>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" formControlName="password">
+      <div *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched)" class="error">
+        <div *ngIf="f['password'].errors?.['required']">Password is required.</div>
+        <div *ngIf="f['password'].errors?.['minlength']">Password must be at least 6 characters long.</div>
+      </div>
+    </div>
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  </form>
+
+  <div *ngIf="loginSuccessful" class="welcome-message">
+    Welcome!
+  </div>
+</div>
+
+
+<router-outlet />
