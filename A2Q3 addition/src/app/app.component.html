@@ -1,0 +1,28 @@
+<div style="text-align:center;">
+  <h1>Addition of Two Numbers</h1>
+
+  <label for="num1">Number 1:</label>
+  <input type="number" id="num1" [(ngModel)]="number1" />
+
+  <label for="num2">Number 2:</label>
+  <input type="number" id="num2" [(ngModel)]="number2" />
+
+  <button (click)="addNumbers()" [disabled]="!number1 && !number2">
+    Add
+  </button>
+  
+  <button (click)="clearFields()" style="margin-left: 10px;">
+    Clear
+  </button>
+
+  <div *ngIf="result !== null">
+    <h2>Result: {{ result }}</h2>
+  </div>
+
+  <div *ngIf="!number1 && !number2 && result === null" style="color: red;">
+    Please enter both numbers to see the result.
+  </div>
+</div>
+
+
+<router-outlet />
